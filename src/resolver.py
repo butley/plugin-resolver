@@ -1,6 +1,5 @@
 import os
 import traceback
-from typing import List
 
 import openai
 import requests
@@ -8,7 +7,7 @@ import yaml
 import logging
 from pydantic import BaseModel
 
-from models import OpenAiUsage, PluginResolutionResponse, RequestDefinition, BaseMessage, HumanEvaluationMessage, \
+from models import OpenAiUsage, PluginResolutionResponse, RequestDefinition, HumanEvaluationMessage, \
     AiEvaluationMessage, MessageChain
 from path import extract_request_and_response_names, extract_components_yaml_for_path
 from file import read_text_file
@@ -72,7 +71,7 @@ class PluginResolver(BaseModel):
     def generate_path(self, paths_section, context_messages, message):
         prompts_messages = context_messages.copy()
         paths_text = yaml.dump(paths_section, default_flow_style=False)
-        payload = read_text_file("prompts/prompt_identify_path.txt").format(yaml=paths_text, message=message)
+        payload = read_text_file("../prompts/prompt_identify_path.txt").format(yaml=paths_text, message=message)
         return self.perform_chat_conversation(prompts_messages, [payload])
 
     def generate_payload_from_components_and_target_path(self, context_messages, message, components_yaml,
@@ -80,7 +79,7 @@ class PluginResolver(BaseModel):
         prompts_messages = context_messages.copy()
         components_text = yaml.dump(components_yaml, default_flow_style=False)
         request, response = extract_request_and_response_names(target_path_yaml)
-        payload = read_text_file("prompts/prompt_generate_request_payload.txt").format(
+        payload = read_text_file("../prompts/prompt_generate_request_payload.txt").format(
             yaml=components_text, entity=request, message=message)
 
         return self.perform_chat_conversation(prompts_messages, [payload])

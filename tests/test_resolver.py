@@ -1,5 +1,5 @@
-from models import MessageChain, OpenAiUsage
-from resolver import PluginResolver
+from src.models import MessageChain, OpenAiUsage
+from src.resolver import PluginResolver
 
 system_message = {"role": "system", "content": "User id: 45"}
 context_messages = [system_message]
