@@ -1,0 +1,23 @@
+Take the openapi yaml components:
+
+{yaml}
+
+Take the following message:
+
+"{message}"
+
+And try to generate a json for {entity}.
+
+If you identify the payload as some sort of Query or filter object:
+     - do NOT include date fields unless clearly specified in the message.
+     - do NOT include id fields.
+
+If you identify as other types of payload and not query or filter then check if there is:
+     - some sort of id field, use: "user." user id + "." + random uuid
+     - some sort of source field, use "chat";
+     - some sort of source_id or type field, extract key data from message itself separated by "." and trim the white spaces, and remove special chars
+     - some sort of owner or author field, assign: "user." user id;
+     - some sort of datetime field, assign today's date timestamp
+
+Do not make any comments.
+Just the payload, if you are not able to generate a valid payload, just reply 'nyl'

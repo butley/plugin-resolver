@@ -1,0 +1,7 @@
+{yaml}
+Based on the yaml provided, which path offers an operation that will support an action supposedly inferred in this message:
+
+"{message}""
+
+No comments.
+Just the path name or 'nyl' if you are not able to find a match.

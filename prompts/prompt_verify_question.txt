@@ -1,0 +1,6 @@
+Look at the user message:
+"{message}"
+
+Can you say this is a question?
+Say 'true' or 'false' only.
+No punctuation, just the word.
