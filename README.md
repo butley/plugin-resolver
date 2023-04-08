@@ -80,7 +80,7 @@ Ensure you are in the project's root directory.
 
 Build the wheel file using Poetry:
 ```bash
-poetry build
+poetry build -f wheel
 ```
 
 This will generate a .whl file in the dist folder within the project's root directory.
